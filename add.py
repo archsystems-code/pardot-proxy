@@ -1,6 +1,4 @@
 import sys
-import importlib
-importlib.reload(sys)
 from pypardot.client import PardotAPI
 
 visitor_id = sys.argv[1]
