@@ -4,6 +4,7 @@ importlib.reload(sys)
 from pypardot.client import PardotAPI
 
 visitor_id = sys.argv[1]
+print(visitor_id)
 email = sys.argv[2]
 password = sys.argv[3]
 key = sys.argv[4]
