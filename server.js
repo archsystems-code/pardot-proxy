@@ -13,7 +13,9 @@ app.use(cors())
 app.post('/add-to-cart-list', async (req, res) => {
   const visitor = req.body.visitor
   PythonShell.run('add.py', { args: [visitor, email, password, key] }, (err, results) => {
-    if (err) throw err;
+    if (err) {
+      console.log(err)
+    }
     res.send({ status: results[0] })
   })
 })
@@ -21,7 +23,9 @@ app.post('/add-to-cart-list', async (req, res) => {
 app.post('/remove-from-cart-list', async (req, res) => {
   const visitor = req.body.visitor
   PythonShell.run('remove.py', { args: [visitor, email, password, key] }, (err, results) => {
-    if (err) throw err;
+    if (err) {
+      console.log(err)
+    }
     res.send({ status: results[0] })
   })
 })
