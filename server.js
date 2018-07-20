@@ -12,9 +12,18 @@ app.use(express.json());
 app.use(cors())
 app.post('/add-to-cart-list', async (req, res) => {
   const visitor = req.body.visitor
-  PythonShell.run('app.py', { mode: 'text', args: [visitor, email, password, key], pythonPath: 'python3' }, (err, results) => {
+  PythonShell.run('add.py', { mode: 'text', args: [visitor, email, password, key], pythonPath: 'python3' }, (err, results) => {
     if (err) throw err;
     res.send({ status: results[0] })
   })
 })
+
+app.post('/remove-from-cart-list', async (req, res) => {
+  const visitor = req.body.visitor
+  PythonShell.run('remove.py', { mode: 'text', args: [visitor, email, password, key], pythonPath: 'python3' }, (err, results) => {
+    if (err) throw err;
+    res.send({ status: results[0] })
+  })
+})
+
 app.listen(port, () => console.log(`Listening on port ${port}`));
