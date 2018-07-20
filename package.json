@@ -1,0 +1,29 @@
+{
+	"name": "pardot-proxy",
+	"version": "1.0.0",
+	"description": "Add people to a list",
+	"author": {
+		"name": "Will Smith",
+		"email": "lwilsonsmith@gmail.com",
+		"url": "https://lwilsonsmith.com"
+	},
+	"license": "MIT",
+	"scripts": {
+		"server": "nodemon server.js",
+		"dev": "concurrently --kill-others-on-fail \"yarn server\" ",
+		"start": "node server.js"
+	},
+	"dependencies": {
+		"compression": "^1.7.3",
+		"dotenv": "^6.0.0",
+		"express": "^4.16.3",
+		"python-shell": "^0.5.0"
+	},
+	"devDependencies": {
+		"concurrently": "^3.6.0"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/archsystems-code/pardot-proxy.git"
+	}
+}
