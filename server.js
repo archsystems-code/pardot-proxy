@@ -1,8 +1,8 @@
 if (process.env.NODE_ENV !== 'production') require('dotenv').config()
 const express = require('express');
 const PythonShell = require('python-shell');
-const app = express();
 const cors = require('cors');
+const app = express();
 const port = process.env.PORT || 5000;
 const email = process.env.EMAIL;
 const password = process.env.PASSWORD;
@@ -15,8 +15,10 @@ app.post('/add-to-cart-list', async (req, res) => {
   PythonShell.run('add.py', { args: [visitor, email, password, key] }, (err, results) => {
     if (err) {
       console.log(err)
+      res.send({ status: err })
+    } else {
+      res.send({ status: results[0] })
     }
-    res.send({ status: results[0] })
   })
 })
 
@@ -25,8 +27,10 @@ app.post('/remove-from-cart-list', async (req, res) => {
   PythonShell.run('remove.py', { args: [visitor, email, password, key] }, (err, results) => {
     if (err) {
       console.log(err)
+      res.send({ status: err })
+    } else {
+      res.send({ status: results[0] })
     }
-    res.send({ status: results[0] })
   })
 })
 
