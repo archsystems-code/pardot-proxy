@@ -18,5 +18,8 @@ p = PardotAPI(
 p.authenticate()
 visitor = p.visitors.read(visitor_id)['visitor']
 prospect_id = visitor['prospect']['id']
-response = p.listmemberships.create(list_id, prospect_id)
-print(response['@attributes']['stat'])
+is_a_member = p.listmemberships.read(list_id, prospect_id)
+response = "Already a member"
+if not is_a_member:
+  response = p.listmemberships.create(list_id, prospect_id)
+print(response)
